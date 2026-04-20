@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Viral Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  background: linear-gradient(45deg,#000,#222);
+  color: white;
+}
+h1 {color: gold;}
+input, button {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 8px;
+  border: none;
+}
+button {
+  background: gold;
+  cursor: pointer;
+}
+canvas {
+  margin-top: 20px;
+  background: black;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🔥 Viral Tools Website</h1>
+
+<!-- Name Generator -->
+<h2>Name Style Generator</h2>
+<input type="text" id="name" placeholder="Enter Name">
+<button onclick="generateName()">Generate</button>
+
+<!-- Couple -->
+<h2>❤️ Couple Maker</h2>
+<input type="text" id="boy" placeholder="Boy Name">
+<input type="text" id="girl" placeholder="Girl Name">
+<button onclick="generateCouple()">Create</button>
+
+<!-- Birthday -->
+<h2>🎂 Birthday Maker</h2>
+<input type="text" id="bname" placeholder="Enter Name">
+<button onclick="generateBirthday()">Create</button>
+
+<br>
+<canvas id="canvas" width="300" height="300"></canvas>
+<br>
+
+<button onclick="download()">Download Image</button>
+<button onclick="share()">WhatsApp Share</button>
+
+<script>
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
+function clearCanvas(){
+  ctx.fillStyle = "black";
+  ctx.fillRect(0,0,300,300);
+}
+
+function generateName(){
+  clearCanvas();
+  let name = document.getElementById("name").value;
+  ctx.fillStyle = "gold";
+  ctx.font = "20px Arial";
+  ctx.fillText("✨ " + name + " ✨", 50,150);
+}
+
+function generateCouple(){
+  clearCanvas();
+  let b = document.getElementById("boy").value;
+  let g = document.getElementById("girl").value;
+  ctx.fillStyle = "pink";
+  ctx.font = "18px Arial";
+  ctx.fillText("❤️ " + b, 80,130);
+  ctx.fillText("+",140,160);
+  ctx.fillText(g + " ❤️", 80,190);
+}
+
+function generateBirthday(){
+  clearCanvas();
+  let n = document.getElementById("bname").value;
+  ctx.fillStyle = "orange";
+  ctx.font = "18px Arial";
+  ctx.fillText("🎂 Happy Birthday 🎂", 30,130);
+  ctx.fillText(n,110,170);
+}
+
+function download(){
+  let link = document.createElement('a');
+  link.download = 'image.png';
+  link.href = canvas.toDataURL();
+  link.click();
+}
+
+function share(){
+  let text = "Try this awesome tool 👉 " + window.location.href;
+  window.open("https://wa.me/?text=" + encodeURIComponent(text));
+}
+
+clearCanvas();
+</script>
+
+</body>
+</html>
